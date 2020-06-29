@@ -1,132 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-
-    <title>Hisham Amery Personal Info </title>
-</head>
-
-<body>
-
-    <!-- Background image html -->
-
-    <div class="bg">
-
-        <!-- Bootstrap navbar code -->
-
-        <div class="container">
-
-            <div class="navCenter">
-                <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-                    <a href="index.html" class="navbar-brand"> Hisham Amery </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                        <span class=" navbar-toggler-icon"></span>
-
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarResponsive">
-
-                        <ul class="navbar-nav ml-auto">
-
-
-                            <li class="nav-item"><a href="index.html" class="nav-link text-white"> About</a></li>
-                            <li class="nav-item"><a href="portfolio.html" class="nav-link text-white"> Portfolio</a>
-                            </li>
-                            <li class="nav-item"><a href="contact.html" class="nav-link text-white"> Contact</a></li>
-
-                        </ul>
-
-                    </div>
-                </nav>
-
-
-            </div>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Password Generator</h1>
+      </header>
+      <div class="card">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
         </div>
-
-        <br>
-        <br>
-
-        <!-- This first container holds the info for my About Me section -->
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="jumbotron">
-
-                        <div class="page-header lead font-weight-bold text-white"> About Me
-
-                        </div>
-
-
-                        <hr>
-
-                        <P class="text-left text-white">
-                            My name is Hisham Amery and I'm born in Canada. My hobbies include hiking, playing tennis,
-                            and
-                            playing
-                            chess. I graduated from the Colorado School of Mines in Petroleum Engineering back in 2017.
-                            I
-                            worked as a
-                            hydraulic fracturing field engineer in West Texas for three years. While I enjoyed my time
-                            there
-                            I am really
-                            looking forward to expanding my programming skillset!
-
-                        </P>
-
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-                    <div class="jumbotron">
-                        <img class="img img-thumbnail" src="https://i.ibb.co/y4vDZL1/me.jpg" alt="Hisham Amery"
-                            width=300px height=300px alt="Hisham Amery">
-                    </div>
-
-
-
-                </div>
-
-            </div>
-
+        <div class="card-body">
+          <textarea
+            readonly
+            id="password"
+            placeholder="Your Secure Password"
+            aria-label="Generated Password"
+          ></textarea>
         </div>
-
+        <div class="card-footer">
+          <button id="generate" class="btn">Generate Password</button>
+        </div>
+      </div>
     </div>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-
-    <!-- Footer Code -->
-
-    <div class="footer">
-
-        <p>Footer</p>
-
-    </div>
-
-    </div>
-
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>

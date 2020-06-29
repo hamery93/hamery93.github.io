@@ -1,21 +1,15 @@
-Mobile First Application
+Random Password Generator
 
-During this project I focused on creating a mobile first portfolio page using
-Twitter Bootstrap. This page has three main sections: About Me, a Portfolio, and a 
-Contact form. 
-
-
-
+During this project I focused on creating an easy to use random password generator. The project prompts the user for the inputs
+they would like in their password and returns a randomized final password. The user must chose a password legnth that is at least 8 
+and no more than 128 characters. 
 
 Author: Hisham Amery
 
-Technologies/Languages: HTML, CSS, Twitter Bootstrap 4
+Technologies/Languages: HTML, CSS, JavaScript
 
 Screenshot Links:
 
-About Me: https://ibb.co/NL1mT8m
+Final Product: https://ibb.co/W616dsw
 
-Contact Me: https://ibb.co/0yzMn8r
-
-Portfolio Page: https://ibb.co/L9sZ89w
 
