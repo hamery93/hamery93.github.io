@@ -1,132 +1,121 @@
-// Arrays Being Used to Generate Password
+//Object containing questions 
 
-var number = "1234567890".split("")
-var lowercase = "abcdefghijklmnopqrstuvwxyz".split("")
-var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
-var symbol = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".split("")
+var questions = [{
+    title: "What is a function inside of a function called?",
+    choices: ["Obama function", "Callback function", "Chair function", "Bagel function"],
+    answer: "Callback function"
+  },
+  {
+    title: "What does API stand for?",
+    choices: ["Apples Pears Iguana", "Africa Pulls Igloos", "Arctic Pigs Inked", "Application Programming Interface"],
+    answer: "Application Programming Interface"
 
+  },
+  {
+    title: "What does URL stand for",
+    choices: ["Unicorn Raffle Lion", "Union Revival Linguini", "Unified Resource Link", "Underneath Rivers Ligers"],
+    answer: "Unified Resource Link"
 
-// Parseint converts string to number
+  },
 
-// The below function has info for pass options
-
-function getPasswordOptions() {
-
-  var passwordLength = parseInt(prompt("How many characters would you like your password to be?"));
-
-  // This while statement makes sure the password length is between 8-128 characters 
-
-  while (passwordLength < 8 || passwordLength > 128) {
-    passwordLength = prompt(" How many characters would you like your password to be? Must be 8-128 characters");
-  }
- 
-  // Checks for type of inputs user would like to include in password. Used new conditional variables
-
-  var conNumber = confirm("Would you like to include numbers?");
-  var conLowercase = confirm("Would you like to include lowercase letters?");
-  var conUppercase = confirm("Would you like to include uppercase letters?");
-  var conSymbol = confirm("Include symbols?");
-
-  // If  user decides to answer "no" on all the questions, we send this alert, then ask again
-
-  if (!(conNumber || conLowercase || conUppercase || conSymbol)) {
-    alert("You must select at least one input type!");
-
+  {
+    title: "What does Math.random() accomplish?",
+    choices: ["Randomizes values", "Makes you a burger", "Gives you powers", "Chair"],
+    answer: "Randomizes values"
   }
 
-  // Object w/ key value pairs
+];
 
-  var passwordOptions = {
+// Declaring Variables 
 
-    passwordLength: passwordLength,
-    conNumber: conNumber,
-    conLowercase: conLowercase,
-    conUppercase: conUppercase,
-    conSymbol: conSymbol
+var timeLeft = questions.length * 15;
+var questionIndex = questions.length; 
+var inUseQuestionIndex = 0;
+var highScore;
+var timerID;
 
-  }
+// Variables we will dynamically work with from HTML page
 
-  return passwordOptions //the return makes this object accessible later 
+var initialDiv = document.getElementById("first");
+var displayHighScore = document.getElementById("highScore");
+var quizStart = document.getElementById("beginQuiz");
+var timerCountdown = document.getElementById("countDown");
+var submitEnd = document.getElementById("submitHS");
+var typeInitials = document.getElementById("initial");
+var buttonD = document.getElementById("back");
+var submitEnd = document.getElementById("clearHS");
+var questionEl = document.getElementById("questions");
+var questionTitleEl = document.getElementById("questionTitle");
+var choicesEl = document.getElementById("choices");
+var feedbackEl = document.getElementById("feedback");
+var finalScoreEl = document.getElementById("finalScore");
+var finalButtonsEl= document.getElementById("finalButtons");
 
+// Object containing quiz questions
+
+function startQuiz() {
+  //come back and see if I can make start screen hide/appear
+
+  timerID = setInterval(clockTick, 1000)
+
+  timerCountdown.textContent = timeLeft
+
+  getQuestion()
 }
 
-//Generates random array using Math.random() function
+function getQuestion() {
 
-function getRandom(Array) {
+  var currentQuestion = questions[inUseQuestionIndex]
+  questionTitleEl.textContent = currentQuestion.title
 
-  var randomIndex = Math.floor(Math.random() * Array.length)
-  var randomElement = Array[randomIndex]
-  return randomElement
+  choicesEl.innerHTML = "" //clears out choices
 
+  currentQuestion.choices.forEach(function (choice, i) { 
+    var choiceNode = document.createElement("button")
+    choiceNode.setAttribute("value", choice)
+    choiceNode.textContent = i + 1 + ". " + choice
+    choiceNode.onclick = questionClick
+    choicesEl.appendChild(choiceNode)
+  })
 }
 
-function generatePassword() {
+//Function that gives meaning/logic to mouse click event
 
-  var options = getPasswordOptions()
-  var result = []
-  var possibleChars = []
-  var gauaranteedChars = []
+function questionClick() {
 
-  //these if statement are checking what parameters users chose and then randomizing them as needed
-
-  if (options.conSymbol) {
-
-    possibleChars = possibleChars.concat(symbol)
-    gauaranteedChars.push(getRandom(symbol)) //push takes symbol and pushes it into empty array above
-
+  if (this.value !== questions[inUseQuestionIndex].answer) {
+    timeLeft -= 15
+    if (timeLeft < 0) {
+      timeLeft = 0
+    }
+    timerCountdown.textContent = timeLeft
+    feedbackEl.textContent = "WRONG"
+  } else {
+    feedbackEl.textContent = "CORRECT"
   }
-
-  if (options.conNumber) {
-
-    possibleChars = possibleChars.concat(number)
-    gauaranteedChars.push(getRandom(number))
-
+  inUseQuestionIndex++
+  if (inUseQuestionIndex === questions.length) {
+    quizEnd()
+  } else {
+    getQuestion()
   }
-
-  if (options.conUppercase) {
-
-    possibleChars = possibleChars.concat(uppercase)
-    gauaranteedChars.push(getRandom(uppercase))
-
-  }
-
-  if (options.conLowercase) {
-
-    possibleChars = possibleChars.concat(lowercase)
-    gauaranteedChars.push(getRandom(lowercase)) //push takes that symbol and pushes it into empty array
-
-  }
-
-  for (i = 0; i < options.passwordLength; i++) { //looking at options object and getting key value pair password length
-
-    var possibleChar = getRandom(possibleChars)
-
-    result.push(possibleChar)
-
-  }
-
-  for (i = 0; i < gauaranteedChars.length; i++) { //looking at array of gauaranteed chars and counting how long it is
-
-    result[i] = gauaranteedChars[i]
-
-  }
-
-  return result.join("") //join is the opposite of split 
-
 }
 
-// Assignment Code
+function quizEnd() {
+  //can also do hide/show of screen
 
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+  clearInterval(timerID)
+  finalScoreEl.textContent = (timeLeft + "  This is your final score!")
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+function clockTick() {
+  timeLeft--
+  timerCountdown.textContent = timeLeft
+  if (timeLeft <= 0) {
+    quizEnd()
+  }
+
+}
+//save high score function if we want to save to local storage
+
+quizStart.onclick = startQuiz
