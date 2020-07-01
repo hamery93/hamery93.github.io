@@ -1,10 +1,8 @@
-Interactive Coding Quiz
+Random Password Generator
 
-During this project I created an interactive coding quiz that features dynamically updated HTML and CSS powered by JavaScript code. 
-
-The objective of the game is to get through the series of questions in the fastest time possible. The final time remaining is the final game score. 
-For every question answered wrong, 15 seconds is docked off the total time. When the game is over, the user has the option of typing in their initials
-and saving their high score to view for later.
+During this project I focused on creating an easy to use random password generator. The project prompts the user for the inputs
+they would like in their password and returns a randomized final password. The user must chose a password legnth that is at least 8 
+and no more than 128 characters. 
 
 Author: Hisham Amery
 
@@ -12,6 +10,6 @@ Technologies/Languages: HTML, CSS, JavaScript
 
 Screenshot Links:
 
-<img src: "\Assets\finalApp.jpg">
+Final Product: https://ibb.co/W616dsw
 
 
